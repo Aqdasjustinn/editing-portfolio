@@ -634,6 +634,20 @@ footer {
   .drive-banner { padding: 28px 24px; }
   footer { padding: 24px; }
 }
+
+  /* Fix mobile video player controls overlay */
+@media (max-width: 768px) {
+  .project-card iframe {
+    pointer-events: none; /* Prevents the user's taps from interacting with the iframe controls directly */
+  }
+  
+  .card-thumb-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+  
 </style>
 </head>
 <body>
