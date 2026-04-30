@@ -630,9 +630,55 @@ footer {
   .hero { padding: 0 24px 64px; }
   section { padding: 80px 24px; }
   .featured-inner { grid-template-columns: 1fr; gap: 40px; }
-  .featured-video-wrap { width: 100%; max-width: 280px; margin: 0 auto; }
+  .featured-video-wrap { width: 100%; max-width: 100%; margin: 0 auto; }
   .drive-banner { padding: 28px 24px; }
   footer { padding: 24px; }
+}
+
+  /* ── Mobile iframe tap fix ─────────────────────────── */
+.card-thumb-wrap {
+  position: relative;
+}
+
+/* On mobile, show a tap-to-open overlay on top of iframes */
+@media (max-width: 900px) {
+  .mobile-tap-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.0);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .mobile-tap-overlay::after {
+    content: '▶  Tap to open';
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: rgba(8,8,8,0.65);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 8px 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .mobile-tap-overlay:active::after,
+  .card-thumb-wrap:hover .mobile-tap-overlay::after {
+    opacity: 1;
+  }
+}
+
+/* Desktop: hide the overlay entirely */
+@media (min-width: 901px) {
+  .mobile-tap-overlay {
+    display: none;
+  }
 }
 
 
